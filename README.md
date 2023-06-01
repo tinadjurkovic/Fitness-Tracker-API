@@ -69,7 +69,7 @@ as well as tracking progress and nutrition information.
 - PostgreSQL
 - RESTful API
 
-#Conclusion
+# Conclusion
 This README file provides an overview of the Fitness Tracker API, 
 including the available endpoints, request/response details, technologies used, 
 and instructions for running the application locally. For more detailed documentation, 

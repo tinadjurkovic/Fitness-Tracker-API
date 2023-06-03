@@ -72,8 +72,7 @@ as well as tracking progress and nutrition information.
 # Conclusion
 This README file provides an overview of the Fitness Tracker API, 
 including the available endpoints, request/response details, technologies used, 
-and instructions for running the application locally. For more detailed documentation, 
-consider generating API documentation using tools like Swagger or documenting the API endpoints in more depth.
+and instructions for running the application locally.
 
 
 

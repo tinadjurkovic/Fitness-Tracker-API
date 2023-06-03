@@ -35,7 +35,7 @@ public class FitnessTrackerService {
         return filterWorkouts(workoutType, date);
     }
 
-    @PutMapping("/workouts/{id}")
+    @PutMapping ("/workouts/{id}")
     public void updateWorkout(
             @PathVariable("id") int id,
             @RequestBody FitnessTracker updatedWorkout
@@ -54,5 +54,32 @@ public class FitnessTrackerService {
         workout.setCalories(updatedWorkout.getCalories());
 
         fitnessTrackerRepository.save(workout);
+    }
+
+    @PostMapping ("/workouts")
+    public void addWorkout(@RequestBody Main.NewWorkoutRequest newWorkoutRequest) {
+
+        FitnessTracker workout = new FitnessTracker();
+
+        workout.setWorkoutType(newWorkoutRequest.workoutType());
+        workout.setDuration(newWorkoutRequest.duration());
+        workout.setIntensity(newWorkoutRequest.intensity());
+        workout.setTitle(newWorkoutRequest.title());
+        workout.setDate(newWorkoutRequest.date());
+        workout.setWeight(newWorkoutRequest.weight());
+        workout.setHeight(newWorkoutRequest.height());
+        workout.setFood(newWorkoutRequest.food());
+        workout.setCalories(newWorkoutRequest.calories());
+
+        fitnessTrackerRepository.save(workout);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteWorkout(@PathVariable("id") Integer id)
+    {
+        FitnessTracker workout = fitnessTrackerRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid workout ID: " + id));
+
+        fitnessTrackerRepository.delete(workout);
     }
 }

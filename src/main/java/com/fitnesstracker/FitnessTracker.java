@@ -17,7 +17,7 @@ public class FitnessTracker {
             strategy = GenerationType.SEQUENCE,
             generator = "fitnesstracker_id_sequence"
     )
-    private int id;
+
     String workoutType;
     double duration;
     String intensity;
@@ -28,23 +28,8 @@ public class FitnessTracker {
     String food;
     int calories;
 
-    public FitnessTracker(int id, String workoutType, double duration, String intensity, String title, LocalDate date, double weight, double height, String food, int calories) {
-        this.id = id;
-        this.workoutType = workoutType;
-        this.duration = duration;
-        this.intensity = intensity;
-        this.title = title;
-        this.date = date;
-        this.weight = weight;
-        this.height = height;
-        this.food = food;
-        this.calories = calories;
-    }
     public FitnessTracker() {}
 
-    public int getId() {
-        return id;
-    }
 
     public String getWorkoutType() {
         return workoutType;
@@ -82,10 +67,6 @@ public class FitnessTracker {
         return calories;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setWorkoutType(String workoutType) {
         this.workoutType = workoutType;
     }
@@ -121,6 +102,5 @@ public class FitnessTracker {
     public void setCalories(int calories) {
         this.calories = calories;
     }
-
 
 }

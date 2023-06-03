@@ -24,6 +24,11 @@ public class FitnessTrackerController {
         return fitnessTrackerService.filterWorkouts(workoutType, date);
     }
 
+    @PostMapping
+    public void addWorkout(@RequestBody Main.NewWorkoutRequest workoutRequest) {
+        fitnessTrackerService.addWorkout(workoutRequest);
+    }
+
     @PutMapping("/workouts/{id}")
     public void updateWorkout(
             @PathVariable("id") int id,
@@ -31,4 +36,12 @@ public class FitnessTrackerController {
     ) {
         fitnessTrackerService.updateWorkout(id, updatedWorkout);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteWorkout(@PathVariable("id") Integer id) {
+
+        fitnessTrackerService.deleteWorkout(id);
+    }
+
+
 }

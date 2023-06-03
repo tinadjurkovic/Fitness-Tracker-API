@@ -14,16 +14,27 @@ public class Main {
 
         SpringApplication.run(Main.class, args);
 
+
     }
+    record NewWorkoutRequest(
+            String workoutType,
+            double duration,
+            String intensity,
+            String title,
+            LocalDate date,
+            double weight,
+            double height,
+            String food,
+            int calories
+    ){}
+
+    record NewProgressRequest(
+            int id,
+            double weight,
+            double height,
+            LocalDate date,
+            double weightGoal,
+            double currentGoal
+    ){}
 }
-record NewWorkoutRequest(
-        String workoutType,
-        double duration,
-        String intensity,
-        String title,
-        LocalDate date,
-        double weight,
-        double height,
-        String food,
-        int calories
-){}
+

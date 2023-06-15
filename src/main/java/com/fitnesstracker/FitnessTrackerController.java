@@ -16,7 +16,7 @@ public class FitnessTrackerController {
         this.fitnessTrackerService = fitnessTrackerService;
     }
 
-    @GetMapping
+    @GetMapping("/workouts")
     public List<FitnessTracker> getWorkoutHistory(
             @RequestParam(value = "workoutType", required = false) String workoutType,
             @RequestParam(value = "date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date
@@ -24,7 +24,7 @@ public class FitnessTrackerController {
         return fitnessTrackerService.filterWorkouts(workoutType, date);
     }
 
-    @PostMapping
+    @PostMapping("/workouts")
     public void addWorkout(@RequestBody Main.NewWorkoutRequest workoutRequest) {
         fitnessTrackerService.addWorkout(workoutRequest);
     }
@@ -37,11 +37,8 @@ public class FitnessTrackerController {
         fitnessTrackerService.updateWorkout(id, updatedWorkout);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/workouts/{id}")
     public void deleteWorkout(@PathVariable("id") Integer id) {
-
         fitnessTrackerService.deleteWorkout(id);
     }
-
-
 }

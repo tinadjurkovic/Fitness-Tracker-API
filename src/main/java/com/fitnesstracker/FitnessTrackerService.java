@@ -1,6 +1,5 @@
 package com.fitnesstracker;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,14 +26,6 @@ public class FitnessTrackerService {
         }
     }
 
-    @GetMapping("/workouts")
-    public List<FitnessTracker> getWorkoutHistory(
-            @RequestParam(value = "workoutType", required = false) String workoutType,
-            @RequestParam(value = "date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date
-    ) {
-        return filterWorkouts(workoutType, date);
-    }
-
     @PutMapping ("/workouts/{id}")
     public void updateWorkout(
             @PathVariable("id") int id,
@@ -56,9 +47,7 @@ public class FitnessTrackerService {
         fitnessTrackerRepository.save(workout);
     }
 
-    @PostMapping ("/workouts")
-    public void addWorkout(@RequestBody Main.NewWorkoutRequest newWorkoutRequest) {
-
+    public void addWorkout(Main.NewWorkoutRequest newWorkoutRequest) {
         FitnessTracker workout = new FitnessTracker();
 
         workout.setWorkoutType(newWorkoutRequest.workoutType());
@@ -74,9 +63,7 @@ public class FitnessTrackerService {
         fitnessTrackerRepository.save(workout);
     }
 
-    @DeleteMapping("{id}")
-    public void deleteWorkout(@PathVariable("id") Integer id)
-    {
+    public void deleteWorkout(Integer id) {
         FitnessTracker workout = fitnessTrackerRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid workout ID: " + id));
 

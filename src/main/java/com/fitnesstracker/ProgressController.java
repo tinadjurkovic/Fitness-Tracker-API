@@ -13,6 +13,7 @@ public class ProgressController {
 
     @Autowired
     public ProgressController(ProgressService progressService) {
+
         this.progressService = progressService;
     }
 

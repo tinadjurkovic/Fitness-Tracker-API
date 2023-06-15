@@ -49,6 +49,7 @@ public class ProgressService {
     }
 
     public void deleteProgress(int progressId) {
+
         progressRepository.deleteById(progressId);
     }
 }
